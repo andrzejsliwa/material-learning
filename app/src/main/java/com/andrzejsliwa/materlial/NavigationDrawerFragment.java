@@ -70,6 +70,12 @@ public class NavigationDrawerFragment extends Fragment {
             drawerLayout.openDrawer(getView());
         }
         drawerLayout.setDrawerListener(drawerToggle);
+        drawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                drawerToggle.syncState();
+            }
+        });
     }
 
     public static void saveToPreferences(Context context, String name, String value) {
